@@ -22,14 +22,20 @@ namespace AbraFlexi\Admin\Ui;
  */
 class UserInfo extends \Ease\Html\DivTag
 {
-    public function __construct($content = null, $properties = [])
+    public function __construct($user = null, $properties = [])
     {
+        $userRow = new \Ease\TWB5\Row();
+        
         $userTable = new \Ease\TWB5\Table();
-
-        foreach ($content->getData() as $property => $value) {
+        $userCompanys = new UserCompanyMembershipForm($user);
+        
+        $userRow->addColumn(6, $userCompanys);
+        
+        foreach ($user->getData() as $property => $value) {
             $userTable->addRowColumns(['p' => (string) $property, 'v' => (string) $value]);
         }
 
-        parent::__construct($userTable, $properties);
+        $userRow->addColumn(6, $userTable);
+        parent::__construct($userRow, $properties);
     }
 }

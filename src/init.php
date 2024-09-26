@@ -25,12 +25,16 @@ new \Ease\Locale('cs_CZ', '../i18n', 'spoje-Admin');
 
 $oPage = WebPage::singleton(new Ui\WebPage());
 
+$oUser = \Ease\Shared::user(null, 'AbraFlexi\User');
+
 $authSessionId = $oPage->getRequestValue('authSessionId');
 $companyUrl = $oPage->getRequestValue('companyUrl');
 
 if ($authSessionId && $companyUrl) {
     $_SESSION['connection'] = \AbraFlexi\Functions::companyUrlToOptions($companyUrl);
     $_SESSION['connection']['authSessionId'] = $authSessionId;
+    $oUser->setUserLogin(\Ease\WebPage::getRequestValue('kod'));
+    $oUser->loginSuccess();
 }
 
 if (\array_key_exists('connection', $_SESSION)) {

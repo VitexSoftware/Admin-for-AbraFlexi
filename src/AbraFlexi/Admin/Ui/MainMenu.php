@@ -32,7 +32,7 @@ class MainMenu extends \Ease\Html\NavTag
         //        $container->addItem(new \Ease\TWB5\LinkButton('contract.php?kod='.$kod, _('Contract'), 'primary'));
         //        $container->addItem(new \Ease\TWB5\LinkButton('product.php?kod='.$kod, _('Product'), 'secondary'));
         $container->addItem(new \Ease\TWB5\LinkButton('user.php?kod='.$kod, new \Ease\Html\ImgTag('images/user.svg').'️&nbsp;'._('User'), 'info'));
-        $container->addItem(new \Ease\TWB5\LinkButton('company.php', new \Ease\Html\ImgTag('images/company.svg').'️&nbsp;'._('Company'), 'info'));
+        $container->addItem(new \Ease\TWB5\LinkButton('companies.php', new \Ease\Html\ImgTag('images/company.svg').'️&nbsp;'._('Company'), 'info'));
 
         parent::__construct($container, ['class' => 'navbar navbar-expand-lg navbar-light bg-light']);
     }

@@ -28,13 +28,13 @@ require './init.php';
 
 $kod = WebPage::getRequestValue('kod');
 
-$oPage->addItem(new PageTop($kod.' '._('Admin')));
+$oPage->addItem(new PageTop($kod . ' ' . _('Admin')));
 
 if (empty($kod)) {
     $oPage->addStatusMessage(_('Bad call'), 'warning');
     $oPage->addItem(new ATag('install.php', _('Please setup your AbraFlexi connection')));
 } else {
-    $user = new \AbraFlexi\Uzivatel(\AbraFlexi\Functions::code($kod));
+    $user = new \AbraFlexi\Uzivatel(\AbraFlexi\Functions::code($kod), ['ignore404' => true]);
     $oPage->container->addItem(new \AbraFlexi\Admin\Ui\UserInfo($user));
 
     try {
